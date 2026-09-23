@@ -52,7 +52,7 @@ function App() {
   const primary = (label, action) => <button className="button button-primary" onClick={action}>{label}<span aria-hidden="true">↗</span></button>
 
   return <main className="page-shell">
-    <audio ref={audioRef} src="/sanson-ki-mala-instrumental.mp3" loop preload="none" onPause={() => setMusicOn(false)} onPlay={() => setMusicOn(true)} />
+    <audio ref={audioRef} src={`${import.meta.env.BASE_URL}sanson-ki-mala-instrumental.mp3`} loop preload="none" onPause={() => setMusicOn(false)} onPlay={() => setMusicOn(true)} />
     <div className="topline"><span className="brand-dot"><Heart size={12} fill="currentColor" /></span><span>a little note for {story.name}</span><button className={`sound-toggle ${musicOn ? 'is-playing' : ''}`} aria-label={musicOn ? 'Pause background music' : 'Play background music'} aria-pressed={musicOn} onClick={toggleMusic}>{musicOn ? <Pause size={13} fill="currentColor" /> : <Music2 size={14} />}<span>{musicOn ? 'Music on' : autoplayBlocked ? 'Tap for music' : 'Music off'}</span></button><button className="restart" aria-label="Start over" onClick={() => { setScreen('intro'); setNoCount(0); setApologyIndex(0); setAccepted(false) }}><RotateCcw size={15} /></button></div>
     <div className="stage-wrap"><AnimatePresence mode="wait">
       {screen === 'intro' && view('intro', <>
