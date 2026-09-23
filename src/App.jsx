@@ -30,18 +30,23 @@ function App() {
     })
   }, [])
 
-  const toggleMusic = async () => {
+  const startMusic = () => {
     const audio = audioRef.current
     if (!audio) return
-    if (audio.paused) {
-      try {
-        await audio.play()
+    audio.play().then(() => {
         setMusicOn(true)
         setAutoplayBlocked(false)
-      } catch {
+      }).catch(() => {
         setMusicOn(false)
-      }
-    } else {
+        setAutoplayBlocked(true)
+      })
+  }
+
+  const toggleMusic = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (audio.paused) startMusic()
+    else {
       audio.pause()
       setMusicOn(false)
     }
@@ -58,7 +63,7 @@ function App() {
       {screen === 'intro' && view('intro', <>
         <div className="stamp">MADE WITH CARE <span>✳</span></div>{mark('🌷')}
         <p className="eyebrow">{story.intro.eyebrow}</p><h1>{story.intro.title}</h1><p className="body-copy preserve">{story.intro.subtitle}</p>
-        {primary(<>{story.intro.button}<Heart size={15} fill="currentColor" /></>, () => setScreen('question'))}
+        {primary(<>{story.intro.button}<Heart size={15} fill="currentColor" /></>, () => { startMusic(); setScreen('question') })}
         <p className="tiny-note">no rush, okay?</p>
       </>)}
       {screen === 'question' && view('question', <>
