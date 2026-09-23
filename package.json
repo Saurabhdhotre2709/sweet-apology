@@ -1,0 +1,9 @@
+{
+  "name": "sweet-apology",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "vite build", "preview": "vite preview", "deploy": "npm run build && gh-pages -d dist" },
+  "dependencies": { "@vitejs/plugin-react": "^6.0.1", "vite": "^8.0.12", "react": "^19.2.6", "react-dom": "^19.2.6", "framer-motion": "^12.40.0", "lucide-react": "^0.468.0" },
+  "devDependencies": { "gh-pages": "^6.3.0" }
+}

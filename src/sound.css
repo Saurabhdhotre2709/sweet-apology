@@ -1,0 +1,28 @@
+.sound-toggle {
+  height: 34px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #eadfd8;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .45);
+  color: #887e79;
+  font: inherit;
+  font-size: 9px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sound-toggle.is-playing {
+  color: #a45f5c;
+  border-color: #dbb8ae;
+  background: #fffaf7;
+}
+
+.sound-toggle:focus-visible {
+  outline: 3px solid #d9aaa0;
+  outline-offset: 2px;
+}
